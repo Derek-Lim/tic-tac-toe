@@ -1,0 +1,16 @@
+div {
+    border: 2px solid black;
+}
+
+div.gameboard {
+    height: 500px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+div.gamegrid {
+    font-size: 80px;
+    text-align: center;
+}
