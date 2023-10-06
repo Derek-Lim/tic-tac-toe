@@ -1,4 +1,4 @@
-div {
+div, button {
     border: 2px solid black;
 }
 
@@ -10,7 +10,7 @@ div.gameboard {
     grid-template-rows: 1fr 1fr 1fr;
 }
 
-div.gamegrid {
+button.gamegrid {
     font-size: 80px;
     text-align: center;
 }
