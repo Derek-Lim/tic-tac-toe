@@ -66,11 +66,15 @@ function GameController(
 
     let activePlayer = players[0];
 
+    let matchOver = false;
+
     const switchPlayerTurn = () => {
         activePlayer = activePlayer === players[0] ? players[1] : players[0];
     };
 
     const getActivePlayer = () => activePlayer;
+
+    const checkMatchOver = () => matchOver;
 
     const checkWinner = () => {
         gameboard = board.getBoard();
@@ -84,68 +88,85 @@ function GameController(
         if (gameboard[0][0].value === 'X' 
             && gameboard[0][1].value === 'X'
             && gameboard[0][2].value === 'X') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 1 Wins!!!'
         } else if (gameboard[0][0].value === 'O' 
             && gameboard[0][1].value === 'O'
             && gameboard[0][2].value === 'O') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 2 Wins!!!'
         } else if (gameboard[1][0].value === 'X' 
             && gameboard[1][1].value === 'X'
             && gameboard[1][2].value === 'X') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 1 Wins!!!'
         } else if (gameboard[1][0].value === 'O' 
             && gameboard[1][1].value === 'O'
             && gameboard[1][2].value === 'O') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 2 Wins!!!'
         } else if (gameboard[2][0].value === 'X' 
             && gameboard[2][1].value === 'X'
             && gameboard[2][2].value === 'X') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 1 Wins!!!'
         } else if (gameboard[2][0].value === 'O' 
             && gameboard[2][1].value === 'O'
             && gameboard[2][2].value === 'O') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 2 Wins!!!'
         } else if (gameboard[0][0].value === 'X' 
             && gameboard[1][0].value === 'X'
             && gameboard[2][0].value === 'X') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 1 Wins!!!'
         } else if (gameboard[0][0].value === 'O' 
             && gameboard[1][0].value === 'O'
             && gameboard[2][0].value === 'O') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 2 Wins!!!'
         } else if (gameboard[0][1].value === 'X' 
             && gameboard[1][1].value === 'X'
             && gameboard[2][1].value === 'X') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 1 Wins!!!'
         } else if (gameboard[0][1].value === 'O' 
             && gameboard[1][1].value === 'O'
             && gameboard[2][1].value === 'O') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 2 Wins!!!'
         } else if (gameboard[0][2].value === 'X' 
             && gameboard[1][2].value === 'X'
             && gameboard[2][2].value === 'X') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 1 Wins!!!'
         } else if (gameboard[0][2].value === 'O' 
             && gameboard[1][2].value === 'O'
             && gameboard[2][2].value === 'O') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 2 Wins!!!'
         } else if (gameboard[0][0].value === 'X' 
             && gameboard[1][1].value === 'X'
             && gameboard[2][2].value === 'X') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 1 Wins!!!'
         } else if (gameboard[0][0].value === 'O' 
             && gameboard[1][1].value === 'O'
             && gameboard[2][2].value === 'O') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 2 Wins!!!'
         } else if (gameboard[0][2].value === 'X' 
             && gameboard[1][1].value === 'X'
             && gameboard[2][0].value === 'X') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 1 Wins!!!'
         } else if (gameboard[0][2].value === 'O' 
             && gameboard[1][1].value === 'O'
             && gameboard[2][0].value === 'O') {
+            matchOver = true;
             playerTurnDiv.textContent = 'Player 2 Wins!!!'
         } else if (unmarkedGrids === 0) {
+            matchOver = true;
             playerTurnDiv.textContent = 'Tie!!!'
         }
     }
@@ -160,5 +181,5 @@ function GameController(
         }
     }
 
-    return {playRound, getActivePlayer, getBoard: board.getBoard};
+    return {playRound, getActivePlayer, checkMatchOver, getBoard: board.getBoard};
 }
