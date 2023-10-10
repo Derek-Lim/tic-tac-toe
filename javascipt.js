@@ -214,4 +214,25 @@ function ScreenController() {
             })
         })
     }
+
+    //Add event listener for the board
+    function clickHandlerBoard(e) {
+        const selectedRow = e.target.dataset.row;
+        //Make sure grid is clicked and not the gaps in between
+        if (!selectedRow) return;
+
+        const selectedColumn = e.target.dataset.column;
+        if (!selectedColumn) return;
+
+        if (game.checkMatchOver() === false) {
+            game.playRound(selectedRow, selectedColumn);
+            updateScreen();
+        }
+    }
+    boardDiv.addEventListener('click', clickHandlerBoard);
+
+    //Initial render
+    updateScreen();
 }
+
+ScreenController();
