@@ -74,7 +74,9 @@ function GameController(
     const playRound = (row, column) => {
         board.finalizeGrid(row, column, getActivePlayer().marker); //mark grid
 
-        switchPlayerTurn();
+        if (gridMarked === true) {
+            switchPlayerTurn();
+        }
     }
 
     return {playRound, getActivePlayer, getBoard: board.getBoard};
