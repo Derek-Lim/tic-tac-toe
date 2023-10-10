@@ -75,6 +75,12 @@ function GameController(
     const checkWinner = () => {
         gameboard = board.getBoard();
 
+        const unmarkedGridsInRow1 = gameboard[0].filter((grid) => grid.value === undefined)
+        const unmarkedGridsInRow2 = gameboard[1].filter((grid) => grid.value === undefined)
+        const unmarkedGridsInRow3 = gameboard[2].filter((grid) => grid.value === undefined)
+    
+        unmarkedGrids = unmarkedGridsInRow1.length + unmarkedGridsInRow2.length + unmarkedGridsInRow3.length
+
         if (gameboard[0][0].value === 'X' 
             && gameboard[0][1].value === 'X'
             && gameboard[0][2].value === 'X') {
@@ -139,6 +145,8 @@ function GameController(
             && gameboard[1][1].value === 'O'
             && gameboard[2][0].value === 'O') {
             playerTurnDiv.textContent = 'Player 2 Wins!!!'
+        } else if (unmarkedGrids === 0) {
+            playerTurnDiv.textContent = 'Tie!!!'
         }
     }
 
