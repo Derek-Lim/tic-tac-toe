@@ -43,3 +43,21 @@ function Grid() {
 
     return {markGrid, getValue};
 }
+
+//GameController controls the state of the game
+function GameController(
+    playerOneName = 'Player One',
+    playerTwoName = 'Player Two'
+) {
+
+    const players = [
+        {
+            name: playerOneName,
+            marker: 'X'
+        },
+        {
+            name: playerTwoName,
+            marker: 'O'
+        }
+    ];
+}
