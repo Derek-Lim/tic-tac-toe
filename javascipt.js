@@ -14,11 +14,32 @@ function Gameboard() {
 
     const getBoard = () => board;
 
-    return {getBoard};
+    const finalizeGrid = (row, column, playerMarker) => {
+        //make sure selected grid is empty, then mark grid
+        if (board[row][column].value === undefined) {
+            board[row][column].markGrid(playerMarker);
+            board[row][column].value = playerMarker;
+            gridMarked = true;
+        } else {
+            alert('Pick a different square.');
+            gridMarked = false;
+        }
+    };
+
+    return {getBoard, finalizeGrid};
 }
 
 //Grid represents a "square" on the board, whose value starts off undefined
 //Value will change to either "X" or "O" as match progresses.
 function Grid() {
     let value = undefined;
+
+    //Accept a player's marker to change the value of the grid
+    const markGrid = (playerMarker) => {
+        value = playerMarker;
+    };
+
+    const getValue = () => value;
+
+    return {markGrid, getValue};
 }
