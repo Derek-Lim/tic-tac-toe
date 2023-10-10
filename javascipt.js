@@ -49,7 +49,8 @@ function GameController(
     playerOneName = 'Player One',
     playerTwoName = 'Player Two'
 ) {
-
+    const playerTurnDiv = document.querySelector('.turn');
+    
     const board = Gameboard();
 
     const players = [
@@ -71,8 +72,80 @@ function GameController(
 
     const getActivePlayer = () => activePlayer;
 
+    const checkWinner = () => {
+        gameboard = board.getBoard();
+
+        if (gameboard[0][0].value === 'X' 
+            && gameboard[0][1].value === 'X'
+            && gameboard[0][2].value === 'X') {
+            playerTurnDiv.textContent = 'Player 1 Wins!!!'
+        } else if (gameboard[0][0].value === 'O' 
+            && gameboard[0][1].value === 'O'
+            && gameboard[0][2].value === 'O') {
+            playerTurnDiv.textContent = 'Player 2 Wins!!!'
+        } else if (gameboard[1][0].value === 'X' 
+            && gameboard[1][1].value === 'X'
+            && gameboard[1][2].value === 'X') {
+            playerTurnDiv.textContent = 'Player 1 Wins!!!'
+        } else if (gameboard[1][0].value === 'O' 
+            && gameboard[1][1].value === 'O'
+            && gameboard[1][2].value === 'O') {
+            playerTurnDiv.textContent = 'Player 2 Wins!!!'
+        } else if (gameboard[2][0].value === 'X' 
+            && gameboard[2][1].value === 'X'
+            && gameboard[2][2].value === 'X') {
+            playerTurnDiv.textContent = 'Player 1 Wins!!!'
+        } else if (gameboard[2][0].value === 'O' 
+            && gameboard[2][1].value === 'O'
+            && gameboard[2][2].value === 'O') {
+            playerTurnDiv.textContent = 'Player 2 Wins!!!'
+        } else if (gameboard[0][0].value === 'X' 
+            && gameboard[1][0].value === 'X'
+            && gameboard[2][0].value === 'X') {
+            playerTurnDiv.textContent = 'Player 1 Wins!!!'
+        } else if (gameboard[0][0].value === 'O' 
+            && gameboard[1][0].value === 'O'
+            && gameboard[2][0].value === 'O') {
+            playerTurnDiv.textContent = 'Player 2 Wins!!!'
+        } else if (gameboard[0][1].value === 'X' 
+            && gameboard[1][1].value === 'X'
+            && gameboard[2][1].value === 'X') {
+            playerTurnDiv.textContent = 'Player 1 Wins!!!'
+        } else if (gameboard[0][1].value === 'O' 
+            && gameboard[1][1].value === 'O'
+            && gameboard[2][1].value === 'O') {
+            playerTurnDiv.textContent = 'Player 2 Wins!!!'
+        } else if (gameboard[0][2].value === 'X' 
+            && gameboard[1][2].value === 'X'
+            && gameboard[2][2].value === 'X') {
+            playerTurnDiv.textContent = 'Player 1 Wins!!!'
+        } else if (gameboard[0][2].value === 'O' 
+            && gameboard[1][2].value === 'O'
+            && gameboard[2][2].value === 'O') {
+            playerTurnDiv.textContent = 'Player 2 Wins!!!'
+        } else if (gameboard[0][0].value === 'X' 
+            && gameboard[1][1].value === 'X'
+            && gameboard[2][2].value === 'X') {
+            playerTurnDiv.textContent = 'Player 1 Wins!!!'
+        } else if (gameboard[0][0].value === 'O' 
+            && gameboard[1][1].value === 'O'
+            && gameboard[2][2].value === 'O') {
+            playerTurnDiv.textContent = 'Player 2 Wins!!!'
+        } else if (gameboard[0][2].value === 'X' 
+            && gameboard[1][1].value === 'X'
+            && gameboard[2][0].value === 'X') {
+            playerTurnDiv.textContent = 'Player 1 Wins!!!'
+        } else if (gameboard[0][2].value === 'O' 
+            && gameboard[1][1].value === 'O'
+            && gameboard[2][0].value === 'O') {
+            playerTurnDiv.textContent = 'Player 2 Wins!!!'
+        }
+    }
+
     const playRound = (row, column) => {
         board.finalizeGrid(row, column, getActivePlayer().marker); //mark grid
+
+        checkWinner();
 
         if (gridMarked === true) {
             switchPlayerTurn();
