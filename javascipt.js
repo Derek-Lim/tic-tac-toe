@@ -190,6 +190,13 @@ function ScreenController() {
     const boardDiv = document.querySelector('.board');
 
     const updateScreen = () => {
+        //clear the board
+        boardDiv.textContent = '';
+
+        //get the newest version of the board and player turn
+        const board = game.getBoard();
+        const activePlayer = game.getActivePlayer();
+
         //Display player's turn
         if (game.checkMatchOver() === false) {
             playerTurnDiv.textContent = `${activePlayer.name}'s turn...`
