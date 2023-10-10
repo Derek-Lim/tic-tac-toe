@@ -183,3 +183,28 @@ function GameController(
 
     return {playRound, getActivePlayer, checkMatchOver, getBoard: board.getBoard};
 }
+
+function ScreenController() {
+    const game = GameController();
+    const playerTurnDiv = document.querySelector('.turn');
+    const boardDiv = document.querySelector('.board');
+
+    const updateScreen = () => {
+        //Display player's turn
+        if (game.checkMatchOver() === false) {
+            playerTurnDiv.textContent = `${activePlayer.name}'s turn...`
+        }
+
+        //Render board squares
+        board.forEach((row, index) => {
+            row.forEach((grid, index1) => {
+                const gridButton = document.createElement('button');
+                gridButton.classList.add('grid');
+                gridButton.dataset.row = index;
+                gridButton.dataset.column = index1;
+                gridButton.textContent = grid.getValue();
+                boardDiv.appendChild(gridButton);
+            })
+        })
+    }
+}
