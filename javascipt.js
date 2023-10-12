@@ -26,7 +26,16 @@ function Gameboard() {
         }
     };
 
-    return {getBoard, finalizeGrid};
+    const clearBoard = () => {
+        for (let i = 0; i < rows; i++) {
+            board[i] = [];
+            for (let j = 0; j < columns; j++) {
+                board[i].push(Grid());
+            }
+        }
+    }
+
+    return {getBoard, finalizeGrid, clearBoard};
 }
 
 //Grid represents a "square" on the board, whose value starts off undefined
@@ -181,13 +190,20 @@ function GameController(
         }
     }
 
-    return {playRound, getActivePlayer, checkMatchOver, getBoard: board.getBoard};
+    const resetGameValues = () => {
+        matchOver = false;
+        board.clearBoard();
+        activePlayer = players[0];
+    }
+
+    return {playRound, getActivePlayer, checkMatchOver, getBoard: board.getBoard, resetGameValues};
 }
 
 function ScreenController() {
     const game = GameController();
     const playerTurnDiv = document.querySelector('.turn');
     const boardDiv = document.querySelector('.board');
+    const startButton = document.querySelector('.start');
 
     const updateScreen = () => {
         //clear the board
@@ -215,6 +231,11 @@ function ScreenController() {
         })
     }
 
+    const restartMatch = () => {
+        game.resetGameValues();
+        updateScreen();
+    }
+
     //Add event listener for the board
     function clickHandlerBoard(e) {
         const selectedRow = e.target.dataset.row;
@@ -231,8 +252,7 @@ function ScreenController() {
     }
     boardDiv.addEventListener('click', clickHandlerBoard);
 
-    //Initial render
-    updateScreen();
+    startButton.addEventListener('click', restartMatch);
 }
 
 ScreenController();
