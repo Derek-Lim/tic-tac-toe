@@ -1,17 +1,29 @@
+div.container {
+    display: flex;
+    flex-direction: column;
+}
+
+button.start {
+    font-size: 100px;
+    border-radius: 60px;
+}
+
+h1.turn {
+    align-self: center;
+}
+
 div.board {
     height: 500px;
     width: 500px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    border: 2px solid black;
+    gap: 10px;
+    align-self: center;
 }
 
 button.grid {
     font-size: 80px;
     text-align: center;
-}
-
-button.start {
-    font-size: 100px;
+    border: 5px solid black;
 }
