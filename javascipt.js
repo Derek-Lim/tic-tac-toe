@@ -228,7 +228,7 @@ function ScreenController(playerOneName, playerTwoName) {
         })
     }
 
-    const restartMatch = () => {
+    const newMatch = () => {
         game.resetGameValues();
         updateScreen();
     }
@@ -249,7 +249,9 @@ function ScreenController(playerOneName, playerTwoName) {
     }
     boardDiv.addEventListener('click', clickHandlerBoard);
 
-    startBtn.addEventListener('click', restartMatch);
+    startBtn.addEventListener('click', newMatch);
+
+    return {newMatch}
 }
 
 function nameGetter() {
@@ -270,9 +272,10 @@ function nameGetter() {
             playerTwoName = document.getElementById('p2Name').value;
 
             form.remove();
-            startBtn.removeEventListener('click', getNameMessage)
+            startBtn.removeEventListener('click', getNameMessage);
         }
-        ScreenController(playerOneName, playerTwoName);
+        const screen = ScreenController(playerOneName, playerTwoName);
+        screen.newMatch();
     })
 
     function getNameMessage() {
