@@ -6,10 +6,14 @@ div.container {
 button.start {
     font-size: 100px;
     border-radius: 60px;
+    margin: 50px;
+    border: 5px solid black;
+    background-color: bisque;
 }
 
 h1.turn {
     align-self: center;
+    font-size: 40px;
 }
 
 div.board {
@@ -25,5 +29,37 @@ div.board {
 button.grid {
     font-size: 80px;
     text-align: center;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+}
+
+form {
+    align-self: center;
+    font-size: 60px;
+    background-color: aliceblue;
     border: 5px solid black;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+form > label {
+    text-align: center;
+}
+
+form > input {
+    font-size: 60px;
+    text-align: center;
+    border-radius: 20px;
+    border: 5px solid black;
+}
+
+form > button {
+    font-size: 30px;
+    border-radius: 20px;
+    border: 5px solid black;
+    background-color: blue;
+    color: white;
 }
